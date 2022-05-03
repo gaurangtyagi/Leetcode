@@ -6,7 +6,6 @@ public:
         int r = 0;
         for (int i = 0; i<nums.size(); i++)
         {
-            
             while(!s.empty() && nums[s.top()] > nums[i])
             {
                 l = min (l, s.top() -1);
@@ -20,7 +19,6 @@ public:
         }
         for (int i = nums.size() - 1; i>=0; i--)
         {
-            
             while(!s.empty() && nums[s.top()] < nums[i])
             {
                 r = max (r, s.top() - 1);
