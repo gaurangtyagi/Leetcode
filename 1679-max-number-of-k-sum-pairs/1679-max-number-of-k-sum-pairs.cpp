@@ -1,7 +1,7 @@
 class Solution {
 public: //nlogn
     int maxOperations(vector<int>& nums, int k) {
-        map <int, int> m; 
+        unordered_map <int, int> m; 
         for (int i = 0; i<nums.size(); i++)
         {
             m[nums[i]]++;
