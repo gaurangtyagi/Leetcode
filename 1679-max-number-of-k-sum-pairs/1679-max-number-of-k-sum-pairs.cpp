@@ -1,5 +1,5 @@
 class Solution {
-public:
+public: //nlogn
     int maxOperations(vector<int>& nums, int k) {
         sort(nums.begin(), nums.end());
         int count = 0; 
