@@ -1,30 +1,25 @@
 class Solution {
 public: //nlogn
     int maxOperations(vector<int>& nums, int k) {
-        sort(nums.begin(), nums.end());
-        int count = 0; 
-        int j = nums.size()-1;
-        int i = 0;
-        while(i < j)
+        map <int, int> m; 
+        for (int i = 0; i<nums.size(); i++)
         {
-            int sum = nums[i] + nums[j];
-            if (sum == k)
+            m[nums[i]]++;
+        }
+        int count = 0; 
+        for (int i = 0; i<nums.size(); i++)
+        {
+            int res = k - nums[i];
+            if (m.count(res))
             {
-                count ++;
-                i++;
-                j--;
+                if (m[res] != 0)
+                {
+                    m[res]--;
+                    count++;
+                }
                 
             }
-            else if (sum > k)
-            {
-                j--;
-            }
-            else 
-            {
-                i++;
-            }
         }
-        return count;
-        
+        return count/2;
     }
 };
