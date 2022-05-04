@@ -10,14 +10,13 @@ public: //nlogn
         for (int i = 0; i<nums.size(); i++)
         {
             int res = k - nums[i];
-            if (m.count(res))
+            if (m.find(res) != m.end())
             {
                 if (m[res] != 0)
                 {
                     m[res]--;
                     count++;
                 }
-                
             }
         }
         return count/2;
