@@ -19,7 +19,7 @@ public:
     //     preorder(root->right);
     // } recursive
     
-    vector<int> preorderTraversal(TreeNode* root) 
+    vector<int> preorderTraversal(TreeNode* root) //iterative
     {
         vector<int> ans;
         stack<TreeNode*> st; 
