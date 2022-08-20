@@ -15,45 +15,23 @@ public:
     vector<vector<int>> levelOrder(TreeNode* root) 
     {
         vector<vector<int>> ans;
+        if (!root) return ans;
         queue <TreeNode*> q;
         q.push(root);
-        q.push(NULL);
-        vector <int> v;
-        if (root == NULL)
+        while(!q.empty())
         {
-            return ans;
-        }
-        else
-        {
-            while(!q.empty())
-        {
-            TreeNode* temp = q.front();
-            q.pop();
-            if (temp == NULL)
+            int size = q.size();
+            vector<int> level;
+            for (int i = 0; i<size; i++)
             {
-                ans.push_back(v);
-                while(!v.empty()) v.pop_back();
-                if (!q.empty())
-                {
-                    q.push(NULL);
-                }
+                TreeNode* node = q.front();
+                q.pop();
+                if (node->left) q.push(node->left);
+                if (node->right) q.push(node->right);
+                level.push_back(node->val);
             }
-            else
-            {
-                v.push_back(temp->val);
-                if (temp -> left)
-                {
-                    q.push(temp -> left);
-                }
-                if (temp -> right)
-                {
-                    q.push(temp -> right);
-                }
-            }
-            
+            ans.push_back(level);
         }
         return ans;
-        }
-        
     }
 };
