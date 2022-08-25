@@ -18,27 +18,59 @@ public:
     //     v.push_back(root->val);
     //     inorder(root->right);
     // } recursive
+    
     vector<int> inorderTraversal(TreeNode* root) 
     {
-        vector<int> ans; 
-        stack<TreeNode*> s;
-        TreeNode* node = root;
-        while(true)
+        vector<int> pre; 
+        vector<int> in; 
+        vector<int> post;
+        if (root == NULL) return in; 
+        stack<pair<TreeNode*, int>> st; 
+        st.push({root, 1});
+        
+        while(!st.empty())
         {
-            if (node)
+            auto it = st.top(); 
+            st.pop();
+            if (it.second == 1)
             {
-                s.push(node);
-                node = node->left;
+                pre.push_back(it.first->val);
+                it.second++;
+                st.push(it);
+                if (it.first->left) st.push({it.first->left, 1});
             }
-            else 
+            else if (it.second == 2)
             {
-                if (s.empty()) break;
-                node = s.top();
-                s.pop();
-                ans.push_back(node->val);
-                node = node->right;
+                in.push_back(it.first->val);
+                it.second++;
+                st.push(it);
+                if (it.first->right) st.push({it.first->right, 1});
             }
-        }
-        return ans;
+            else if (it.second == 3)
+            {
+                post.push_back(it.first->val);
+            }
+        } 
+        return in;
+        // vector<int> ans; 
+        // stack<TreeNode*> s;
+        // TreeNode* node = root;
+        // while(true)
+        // {
+        //     if (node)
+        //     {
+        //         s.push(node);
+        //         node = node->left;
+        //     }
+        //     else 
+        //     {
+        //         if (s.empty()) break;
+        //         node = s.top();
+        //         s.pop();
+        //         ans.push_back(node->val);
+        //         node = node->right;
+        //     }
+        // } iterative
+        //return ans;
     }
 };
