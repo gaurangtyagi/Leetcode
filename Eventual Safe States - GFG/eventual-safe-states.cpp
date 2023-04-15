@@ -21,7 +21,6 @@ class Solution {
             {
                 if (dfs(it, adj, vis, path, check))
                 {
-                    check[node] = 0; 
                     return true;
                 }
             }
@@ -29,7 +28,7 @@ class Solution {
             {
                 if (path[it])
                 {
-                    check[node] = 0; 
+                    
                     return true; 
                 }
             }
