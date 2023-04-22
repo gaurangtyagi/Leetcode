@@ -21,7 +21,7 @@ class Solution {
                 int u = it[0];
                 int v = it[1];
                 int wt = it[2];
-                if (dist[u] != 1e8 && dist[u] + wt < dist[v]){
+                if (dist[u] + wt < dist[v]){
                     dist[v] = wt + dist[u];
                 }
             }
